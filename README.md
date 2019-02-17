@@ -1,5 +1,5 @@
 # topdownshooter
-simple top down shooter, that was made for learning purposes
+Simple top down shooter, that was made for learning purposes
 
 ## dependencies
 <a href="https://github.com/SFML/SFML">sfml</a>
