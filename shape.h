@@ -1,6 +1,7 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 #include "vec.h"
+#include "math_constants.h"
 //#include "body.h"
 #include <memory>
 #include <cfloat>
@@ -49,7 +50,7 @@ struct Circle : public Shape {
 		// Draw a circle
 		sf::Vertex v[segments];
 		double phi = body->orient;
-		float step = 2.f*static_cast<float> (M_PI) / static_cast<float> (segments);
+		float step = 2.f*static_cast<float> (m_pi) / static_cast<float> (segments);
 		for (unsigned i = 0; i < segments; ++i) {
 			phi += step;
 			v[i].position = sf::Vector2f(cos (phi), sin (phi));
@@ -71,7 +72,7 @@ struct Circle : public Shape {
 	}
 	void setOrient (float radians) {}
 	void computeMass (float density) {
-		body->m = M_PI * radius * radius * density;
+		body->m = m_pi * radius * radius * density;
 		body->im = (body->m) ? 1.0f / body->m : 0.0f;
 		body->I = body->m * radius * radius;
 		body->iI = (body->I) ? 1.0f / body->I : 0.0f;

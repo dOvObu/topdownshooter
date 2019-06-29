@@ -3,6 +3,7 @@
 #include "aabb.h"
 #include "vec.h"
 #include "tot.h"
+#include "math_constants.h"
 #include <list>
 #include <memory>
 #include <SFML/Graphics.hpp>

@@ -19,10 +19,10 @@ void MagnumBullet::draw (sf::RenderWindow& window) {
 	attackBlock->pos[0] = position.x, attackBlock->pos[1] = position.y;
 
 	sf::Vertex v[] = {
-		getVec (2.f, angle + M_PI) + position,
-		getVec (2.f, angle + 3.f * M_PI / 2.f) + position,
+		getVec (2.f, angle + m_pi) + position,
+		getVec (2.f, angle + 3.f * m_pi / 2.f) + position,
 		getVec (12.f, angle) + position,
-		getVec (2.f, angle + M_PI / 2.f) + position
+		getVec (2.f, angle + m_pi / 2.f) + position
 	};
 	v[2].color = sf::Color(255, 255, 0, 255);
 	window.draw(v, 4, sf::Quads);

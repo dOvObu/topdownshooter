@@ -1,3 +1,4 @@
+#include "math_constants.h"
 #include "tot.h"
 #include "audiomanager.h"
 #include "mouse.h"
@@ -29,10 +30,10 @@ int main () {
 	std::thread audio (AudioManager::update);
 	audio.detach ();
 
-	getEvilBox (200, 300, M_PI*0.25f, M_PI);
-	getEvilBox (600, 300, M_PI, 0.f * M_PI);
-	getEvilBox (400, 100, 0.5f * M_PI, 1.5f * M_PI);
-	getEvilBox (400, 500, 1.5f * M_PI, 0.5f * M_PI);
+	getEvilBox (200, 300, m_pi*0.25f, m_pi);
+	getEvilBox (600, 300, m_pi, 0.f * m_pi);
+	getEvilBox (400, 100, 0.5f * m_pi, 1.5f * m_pi);
+	getEvilBox (400, 500, 1.5f * m_pi, 0.5f * m_pi);
 	
 	sf::RenderWindow window (sf::VideoMode(800,600), "Hi");
 

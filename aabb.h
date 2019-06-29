@@ -1,6 +1,8 @@
 #ifndef AABB_H
 #define AABB_H
 #include "vec.h"
+#include "math_constants.h"
+#include <iostream>
 #include <cmath>
 #include <vector>
 #include <memory>
@@ -8,10 +10,6 @@
 
 enum class collisionType {fromUp, fromRight, fromDown, fromLeft};
 
-auto f0 = [](float halpha)->float {return -halpha;};
-auto f1 = [](float halpha)->float {return halpha;};
-auto f2 = [](float halpha)->float {return M_PI - halpha;};
-auto f3 = [](float halpha)->float {return M_PI + halpha;};
 
 struct AABB {
 	float size[2], pos[2];
@@ -31,7 +29,7 @@ struct AABB {
 		if (halpha >= fabs(phi)) {
 			return collisionType::fromRight;
 		}
-		if (M_PI - halpha <= fabs (phi)) {
+		if (m_pi - halpha <= fabs (phi)) {
 			return collisionType::fromLeft;
 		}
 		if (phi < 0.f) {
@@ -63,6 +61,11 @@ struct AABB {
 	}
 	~AABB () {}
 	static std::vector<std::shared_ptr<AABB> > bodies;
+private:
+	float f0 (float halpha) {return -halpha;};
+	float f1 (float halpha) {return halpha;};
+	float f2 (float halpha) {return m_pi - halpha;};
+	float f3 (float halpha) {return m_pi + halpha;};
 };
 
 extern AABB* walls[4];

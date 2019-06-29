@@ -1,12 +1,11 @@
 #include "evilbox.h"
-#include "player.h"
-#include "aabb.h"
 
 std::vector<std::shared_ptr<EvilBox>> EvilBox::boxes;
 
 
 EvilBox* getEvilBox (float x, float y, float phi, float angle) {
 	EvilBox::boxes.push_back(std::shared_ptr<EvilBox>(new EvilBox (x, y, phi, angle)));
+	return EvilBox::boxes.back ().get ();
 }
 
 
@@ -28,16 +27,16 @@ void EvilBox::draw (sf::RenderWindow& window) {
 	auto dif = position - Player::position;
 	float angle2 = atan2f(dif.y, dif.x); // под таким углом цель
 	if (fabs(angle2 - angle) > 2.1f){
-		if (angle < 0.f && angle2 > 0.f) { angle += 2.f*M_PI; }
-		if (angle > 0.f && angle2 < 0.f) { angle -= 2.f*M_PI; }
+		if (angle < 0.f && angle2 > 0.f) { angle += 2.f*m_pi; }
+		if (angle > 0.f && angle2 < 0.f) { angle -= 2.f*m_pi; }
 	}
 	omega = (angle2 - angle) * 0.005f;
 	angle += omega; // угол поворота коробки, в радианах
 	sf::Vertex v[] = {
 		getVec (40.f, angle + 0) + position,
-		getVec (40.f, angle + 1.f/2.f * M_PI) + position,
-		getVec (45.f, angle + M_PI) + position,
-		getVec (40.f, angle + 3.f/2.f * M_PI) + position
+		getVec (40.f, angle + 1.f/2.f * m_pi) + position,
+		getVec (45.f, angle + m_pi) + position,
+		getVec (40.f, angle + 3.f/2.f * m_pi) + position
 	};
 	v[0].color = sf::Color(0,155,0,255);
 	v[1].color = sf::Color(0,100,0,255);
@@ -51,9 +50,9 @@ void EvilBox::control () {
 	static float dt = 0.f;
 	dt = tot::getDTime ();
 	//setWillOfAI (acceleration, velocity);
-	if (phi < M_PI) phi += dt * 0.02f;
+	if (phi < m_pi) phi += dt * 0.02f;
 	else phi += dt * 0.08f;
-	if (phi >= M_PI*2.f) phi=0.f;
+	if (phi >= m_pi*2.f) phi=0.f;
 	float A = - 3.5f * dt;
 	velocity = getVec(A * std::sin(phi) + 0.8f * A, angle);
 	//printf ("A ~ %f\n", 10.f * std::sin( * 0.1f));

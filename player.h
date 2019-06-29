@@ -6,6 +6,7 @@
 #include "vec.h"
 #include "aabb.h"
 #include "magnumbullet.h"
+#include "math_constants.h"
 
 #include <SFML/Graphics.hpp>
 #include <iostream>

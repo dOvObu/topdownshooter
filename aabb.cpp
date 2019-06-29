@@ -1,6 +1,4 @@
 #include "aabb.h"
-#include "evilbox.h"
-#include <iostream>
 
 std::vector<std::shared_ptr<AABB> > AABB::bodies;
 AABB* walls[4];

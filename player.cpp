@@ -22,10 +22,10 @@ void Player::draw (sf::RenderWindow& window) {
 	Player::angle = atan2f(dif.y, dif.x);// угол поворота персонажа, в радианах
 
 	sf::Vertex v[] = {
-		getVec (30.f, angle + M_PI) + position,
-		getVec (10.f, angle + 3.f * M_PI / 2.f) + position,
+		getVec (30.f, angle + m_pi) + position,
+		getVec (10.f, angle + 3.f * m_pi / 2.f) + position,
 		getVec (10.f, angle) + position,
-		getVec (10.f, angle + M_PI / 2.f) + position
+		getVec (10.f, angle + m_pi / 2.f) + position
 	};
 	v[0].color = sf::Color(255,0,0,255);
 	v[1].color = sf::Color(155,0,0,255);
